@@ -1,0 +1,45 @@
+{
+  "name": "agente",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start --port 3001",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "start:acceptance": "next start --port 3100",
+    "acceptance": "start-server-and-test \"pnpm start:acceptance\" http://127.0.0.1:3100 \"node scripts/acceptance.mjs\"",
+    "verify": "pnpm test:run && pnpm build && pnpm acceptance"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.438",
+    "@remotion/cli": "4.0.438",
+    "@remotion/player": "^4.0.438",
+    "@remotion/renderer": "^4.0.438",
+    "next": "^16.2.1",
+    "openai": "^6.33.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.438",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.1",
+    "jsdom": "^29.0.1",
+    "postcss": "^8.5.8",
+    "start-server-and-test": "^3.0.0",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.2"
+  }
+}

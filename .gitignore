@@ -1,0 +1,10 @@
+node_modules
+.next
+.generated
+pnpm-lock.yaml
+*.log
+.env.local
+.env.production
+tsconfig.tsbuildinfo
+
+.env
