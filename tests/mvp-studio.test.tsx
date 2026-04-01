@@ -17,6 +17,10 @@ describe("MvpStudio", () => {
     ).toBeInTheDocument();
 
     expect(
+      screen.getByRole("button", { name: "Refresh 渐进出现" }),
+    ).toBeInTheDocument();
+
+    expect(
       (screen.getByTestId("prompt-input") as HTMLTextAreaElement).value,
     ).toContain("AI 设计助手");
   });

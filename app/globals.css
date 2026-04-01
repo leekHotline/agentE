@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+:root {
+  --ink: #16201d;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: linear-gradient(180deg, #f8f4ed 0%, #f7f8f6 46%, #eef5f3 100%);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -13,10 +22,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-:root {
-  --ink: #16201d;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -26,4 +31,91 @@ button,
 input,
 textarea {
   font: inherit;
+}
+
+::selection {
+  background: rgba(20, 184, 166, 0.18);
+  color: #0f172a;
+}
+
+.glass-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.56));
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(24px);
+}
+
+.interactive-ring {
+  isolation: isolate;
+}
+
+.tilt-surface {
+  transform:
+    perspective(1600px)
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg))
+    translateY(var(--surface-lift, 0px));
+  transform-style: preserve-3d;
+  transition: transform 220ms ease, box-shadow 220ms ease, opacity 220ms ease;
+  will-change: transform;
+}
+
+.reveal-up {
+  animation: rise-in 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.floating-orb {
+  animation: drift 16s ease-in-out infinite;
+}
+
+.slow-grid {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
+  background-position: center;
+  background-size: 52px 52px;
+  mask-image: radial-gradient(circle at center, black, transparent 82%);
+  opacity: 0.45;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-up,
+  .floating-orb {
+    animation: none;
+  }
+
+  .tilt-surface,
+  button,
+  a,
+  textarea {
+    transition: none !important;
+  }
 }
